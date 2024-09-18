@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onderzoek google zoekmachine</title>
+    <link rel="stylesheet" href="stylesheet.css"/>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-inner">
+            <h1>Algoritmes</h1>
+        </div>
+    </div>
+
+    <div class="header">
+        <a href="index.html" class="logo-link">
+            <img src="C:\Users\msger\Documents\website\logo website anouk en merel.png" alt="A & M" class="logo">
+        </a>
+    
+        <input type="checkbox" id="nav-toggle-checkbox" style="display:none;">
+        <label for="nav-toggle-checkbox" class="nav-toggle">&#9776;</label>
+    
+        <ul class="nav">
+            <li><a href="Algoritmes.html">Algoritmes</a></li>
+            <li><a href="Onderdelengooglezoekmachine.html">Onderdelen google zoekmachine</a></li>
+            <li><a href="SEO.html">SEO</a></li>
+            <li><a href="Tijdlijn.html">Tijdlijn</a></li>
+            <li><a href="Over ons.html">Over ons</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="main-text">
+        <div>
+            <h1>Hoe werkt het pagerank algoritme op bronnen?</h1>
+            <h2>Pagerank Algoritme</h2>
+            <p>Vroeger werden er in zoekmachines websites op volgorde gezet door de tekst die in de websites zelf stond. 
+                Als er bijvoorbeeld wordt gezocht op het woord google, zou er een pagina helemaal bovenaan kunnen staan waar een miljoen keer het woord google in staat en verder niks. 
+                Dat was niet de bedoeling van de zoekmachine, dus is het pagerank algoritme opgezet door Larry Page en Sergey Brin. 
+                Het is een algoritme die websites op het internet op volgorde zet door te kijken welke pagina&apos;s aan een specifieke pagina linken.
+            <br><br>
+                Een site wordt in het pagerank algoritme als een knooppunt gezien. 
+                Als een knooppunt A aan een ander knooppunt B gekoppeld is, zal het knooppunt A verwijzen naar het knooppunt B. 
+                Er zou dan een lineair systeem ontstaan. Het enige probleem daarmee is dat het een grafiek zou opleveren wat veel geheugen gebruikt. 
+                Dat is niet ideaal. [1]
+            <br><br>
+                Het is makkelijker om een markovketen te gebruiken om websites een verschillende waarde te geven. 
+                Een markovketen heeft een vaste verdeling in het geval dat vanaf elk knooppunt alle andere knooppunten verbonden zijn. 
+                Dat is bij het pagerank algoritme aan de hand. 
+                Na een hele lange wandeling in de markovketen komt er een vaste verdeling uit die π genoemd wordt. 
+                Hoe hoger de kans dat een gebruiker op een knooppunt terecht komt, hoe belangrijk het knooppunt is. 
+                Daarmee kunnen platvormen/webpagina&apos;s gesorteerd worden op waarde. 
+                Hieronder wordt de markovketen wat uitgebreider uitgelegd.
+            </p>
+            <h2>Markovketen</h2>
+            <p> In de Markovketen hieronder staan 3 getallen die verbonden zijn met pijlen. De 3 getallen stellen websites voor waar gebruikers op kunnen komen.
+            </p>
+            <img src="C:\Users\msger\Documents\website\Markov chain example.png">
+            <p> De pijlen geven aan wat de kans is dat de gebruiker op de volgende website (het volgende getal) terecht komt. 
+                De pijlen worden <em>&apos;weighted arrows&apos;</em> genoemd. 
+                Er zijn ook pijlen die naar hetzelfde getal terug gaan. 
+                Die pijlen heten &apos;self-pointing arrows&apos;. 
+                De uitkomst van alle pijlen samen die van een bepaald getal komen is 1.
+            <br><br>
+                De algemene formule voor markovketens is:
+            <br><br>
+                P(X<sub>n+1</sub> = x│X<sub>n</sub> = x<sub>n</sub>)
+            <br><br>
+                In de formule staat eigenlijk dat X<sub>n+1</sub> alleen afhangt van X<sub>n</sub>.
+                Stel dat X<sub>1</sub> = 4, X<sub>2</sub> = 5 en X<sub>3</sub> = 4. 
+                In het voorbeeld van eerder ziet de algemene formule voor markovketens er dan zo uit:
+            </p>
+            <div class="formules-container">
+                <p> P(X<sub>4</sub> = 7│X<sub>3</sub> = 4) = 0,7
+                </p>
+            </div>
+            <p> Opnieuw wordt dus alleen het huidige getal gebruikt om het volgende getal te bepalen.
+                De formule geeft aan dat de kans 0,7 is, dat X<sub>4</sub> het getal 7 wordt, als X<sub>3</sub> = 4. [2]
+            </p>
+            <h3>Kansen berekenen</h3>
+            <p> In markovketens bestaat er een <b>vaste verdeling</b> van kansen.
+                Deze vaste verdeling kan worden uitgerekend door veel stappen random te genereren.
+                Deze methode is alleen niet efficiënt en ook niet betrouwbaar, omdat er een andere vaste verdeling uit had kunnen komen als er meer getallen waren gebruikt bij het genereren. 
+                Het is namelijk een toevalsproces die met de tijd verandert. 
+                Daarom is het nodig om lineaire algebra te gebruiken om de vaste verdeling uit te rekenen.
+            <br><br>
+                Dat is met een <b>transitiematrix</b> te bepalen. 
+                De transitiematrix van het eerder genoemde voorbeeld ziet er als volgt uit:
+            </p>
+            <div class="formules-container">
+                <p> A = </p>
+                <table class="matrix">
+                    <tr>
+                        <td>0,2</td>
+                        <td>0,6</td>
+                        <td>0,2</td>
+                    </tr>
+                    <tr>
+                        <td>0,3</td>
+                        <td>0</td>
+                        <td>0,7</td>
+                    </tr>
+                    <tr>
+                        <td>0,5</td>
+                        <td>0</td>
+                        <td>0,5</td>
+                    </tr>
+                </table>
+            </div>
+            <p> De waardes in de matrix zijn de waardes die vast zaten aan de pijlen in het voorbeeld. 
+                De knooppunten staan op volgorde van 5, 4, 7. 
+                Als de huidige waarde 5 zou zijn en de volgende waarde 7 zou dat 0,2 kans zijn, omdat rechts bovenin de matrix 0,2 staat. 
+                De rij staat dus voor de huidige waarde en de kolom voor de volgende waarde.
+            <br><br>
+                Stel dat de eerste stap X<sub>1</sub> = 4. 
+                Als dit in een matrix weergegeven zou worden, zou het er zo uit zien: 
+            </p>
+            <div class="formules-container">
+                <p> X<sub>1</sub> = 
+                </p>
+                <table class="matrix">
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+            <p> Om de waarde van X<sub>2</sub> te krijgen wordt X<sub>1</sub> vermenigvuldigt met A. Dat ziet er zo uit:
+            </p>
+            <div class="formules-container">
+                <p> X<sub>2</sub> = X<sub>1</sub>A = </p>
+                <table class="matrix">
+                    <tr>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+                <table class="matrix">
+                    <tr>
+                        <td>0,2</td>
+                        <td>0,6</td>
+                        <td>0,2</td>
+                    </tr>
+                    <tr>
+                        <td>0,3</td>
+                        <td>0</td>
+                        <td>0,7</td>
+                    </tr>
+                    <tr>
+                        <td>0,5</td>
+                        <td>0</td>
+                        <td>0,5</td>
+                    </tr>
+                </table>
+                <p> = </p>
+                <table class="matrix">
+                    <tr>
+                        <td>0,3</td>
+                        <td>0</td>
+                        <td>0,7</td>
+                    </tr>
+                </table>
+            </div>
+            <p> De kans voor de volgende waarde komt dus uit de transitiematrix vermenigvuldigd met de huidige waarde.
+                Als de output meerdere keren wordt ingevoerd als input zou er uiteindelijk dezelfde output als input uit komen. 
+                Dat is de meer nauwkeurige manier om de vaste verdeling te krijgen. [3]
+            <br><br>
+                Er is alleen wel één probleem. 
+                Stel dat er een knooppunt is, waar geen links in staan. 
+                Dan kan de gebruiker nergens anders meer heen. 
+                De oplossing daarvoor is <b>teleportatie</b>. 
+                Er is altijd een kans dat de gebruiker teleporteert vanuit een pagina naar een andere pagina. 
+                De formule voor deze kans kan worden weergegeven als:
+            </p>
+            <div class="formules-container">
+                <p>M = (1 - p) * A + p * B waar B = 1/n * </p>
+                <table class="matrix">
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+            </div>
+            <p> M staat voor de pagerank matrix, A staat voor de transitiematrix en B staat voor de huidige pagina. 
+                In de formule is een constante p die een waarde heeft tussen de 0 en de 1. 
+                Deze constante heet de <b>dempingsfactor</b>. 
+                De dempingsfactor geeft aan wat de kans is dat de gebruiker naar een andere pagina teleporteert. 
+                Elke pagina heeft een kans van 1/n om gekozen te worden door de gebruiker.
+                De matrix bij de huidige pagina is zo groot als hoeveel pagina's er in totaal zijn. [3]
+            </p>
+            <br><br>
+            <h3>Referenties</h3>
+            <p> 1. Amine, A. (2021, 24 december). PageRank algorithm, fully explained - Towards Data Science. Medium. <a href='https://towardsdatascience.com/pagerank-algorithm-fully-explained-dc794184b4af'>https://towardsdatascience.com/pagerank-algorithm-fully-explained-dc794184b4af</a>
+            <br><br>
+                2. Normalized Nerd. (2020, 25 oktober). Markov Chains Clearly Explained! Part - 1 [Video]. YouTube. <a href="https://www.youtube.com/watch?v=i3AkTO9HLXo"> https://www.youtube.com/watch?v=i3AkTO9HLXo</a>
+            <br><br>
+                3. Radu, R. T. R. (z.d.). PageRank Algorithm - The Mathematics of Google Search. <a href="https://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html"> https://pi.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html</a></p>
+        </div>
+    </div>
+
+    <div>
+        <a class="pijltje-boven" href="#"><img height="80" width="100" src="c:\Users\msger\Documents\website\Pijl website pws.jpg"></a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 onderzoek pws: google zoekmachine</p>
+    </div>
+
+</body>
+</html>
